@@ -1,6 +1,6 @@
 
 const inp=document.querySelector("#photo");
-const submit = document.querySelector("#submit-btn");
+const uploadBtn = document.querySelector("#upload-btn");
 const username = document.querySelector("#username");
 const phone = document.querySelector("#phone");
 const address = document.querySelector("#address");
@@ -37,7 +37,7 @@ password.addEventListener("change", (e)=>{
 inp.addEventListener("change", async (e)=>{
   image = e.target.files[0];
 })
-submit.addEventListener("click", async (e)=>{
+uploadBtn.addEventListener("click", async (e)=>{
   e.preventDefault();
   // console.log(image);
   const formdata = new FormData();
@@ -59,24 +59,34 @@ submit.addEventListener("click", async (e)=>{
     console.log(data.secure_url)
   });
 
-  await axios.post("http://localhost:3000/upload_img", {
-    username: user,
-    photo: image,
-    email__: email_id,
-    phone__: contact,
-    adress__: address_,
-    dob__: dob,
-    age__: age_,
-    gender__: gender_,
-    pass__:pass
-  })
-  .then((response)=>{
-    console.log(response);
-  }).catch(err=>{
-    console.log(err);
-  })
+  document.querySelector("#submit-btn").classList.remove("hidden");
+  document.querySelector("#photo-url").value = image;
+  // await axios.post("http://localhost:3000/upload_img", {
+  //   username: user,
+  //   photo: image,
+  //   email__: email_id,
+  //   phone__: contact,
+  //   adress__: address_,
+  //   dob__: dob,
+  //   age__: age_,
+  //   gender__: gender_,
+  //   pass__:pass
+  // })
+  // .then((response)=>{
+  //   console.log("yo");
+  //   console.log(response);
+    
+  // })
 
   
+    // .then(()=>{"
 
- 
+  // })
+  // .catch(err=>{
+  //   console.log(err);
+  // })
+  
+  // e.continueDefault();
+  // window.location.href="https://google.com";
+
 })
