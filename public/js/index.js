@@ -39,16 +39,10 @@ inp.addEventListener("change", async (e)=>{
 })
 uploadBtn.addEventListener("click", async (e)=>{
   e.preventDefault();
-  // console.log(image);
   const formdata = new FormData();
   formdata.append("file", image);
   formdata.append("upload_preset", "waky6hpg");
   formdata.append("cloud_name", "dnqtftiwh");
-  // console.log(formdata);
-  // for (var key of formdata.entries()) {
-  //   console.log(key[0] + ', ' + key[1])
-  // }
-  // console.log(image);
   await fetch("https://api.cloudinary.com/v1_1/dnqtftiwh/image/upload", {
     method: "post",
     body: formdata,
@@ -61,32 +55,4 @@ uploadBtn.addEventListener("click", async (e)=>{
 
   document.querySelector("#submit-btn").classList.remove("hidden");
   document.querySelector("#photo-url").value = image;
-  // await axios.post("http://localhost:3000/upload_img", {
-  //   username: user,
-  //   photo: image,
-  //   email__: email_id,
-  //   phone__: contact,
-  //   adress__: address_,
-  //   dob__: dob,
-  //   age__: age_,
-  //   gender__: gender_,
-  //   pass__:pass
-  // })
-  // .then((response)=>{
-  //   console.log("yo");
-  //   console.log(response);
-    
-  // })
-
-  
-    // .then(()=>{"
-
-  // })
-  // .catch(err=>{
-  //   console.log(err);
-  // })
-  
-  // e.continueDefault();
-  // window.location.href="https://google.com";
-
 })

@@ -30,72 +30,59 @@
         <div class="px-10 pt-4 pb-8 rounded-3xl shadow-xl">
           <div class="mx-auto text-center">
             <h1 class="text-4xl text-purple-500">Register</h1>
+            <p class="text-center text-sm text-gray-400 mt-4">Have an account ? <a href="/login_page" class="font-semibold text-purple-600 hover:underline">Log in</a></p>
           </div>
           <form action="/signup_page" method="POST">
-          <!-- <form> -->
-            <!-- <div class="grid grid-col-2 gap-4"> -->
-              <!-- <div class="d-flex justify-content-center form-group mb-3">
-                <fieldset>
-                  <div class="toggle">
-                    <input required type="radio" id="user" value="user" name="role" checked="checked">
-                    <label class="form-label" for="user">User</label> -->
-                    <div class="mt-10 relative">
-                      <input id="username" name="username" type="text" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" placeholder="-" required>
-                      <label for="username" class="absolute left-0 -top-3.5 text-grey-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Username</label>
-                    </div>
-                    <div class="mt-10 relative">
-                      <input id="photo" name="photo" type="file" class="peer w-full px-0.5 border-0 border-b-2 text-sm text-gray-400 border-gray-300 placeholder-transparent mt-2 focus:ring-0 focus:border-purple-600" placeholder="-" required>
-                      <input id="photo-url" name="photoUrl" type="text" />
-                      <button id="upload-btn">Upload</button>
-                      <label for="photo" class="absolute left-0 -top-3 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Photo</label>
-                    </div>
-                    <div class="mt-10 relative">
-                      <input id="email" name="email" type="text" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" placeholder="-" required>
-                      <label for="email" class="absolute left-0 -top-3 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Email</label>
-                    </div>
-                    <div class="mt-10 relative">
-                      <input id="phone" name="phone" type="tel" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" pattern="[0-9]{10}" placeholder="-" required>
-                      <label for="phone" class="absolute left-0 -top-3 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Phone Number</label>
-                    </div>
-                    <div class="mt-10 relative">
-                      <input id="address" name="address" type="text" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" placeholder="-" required>
-                      <label for="address" class="absolute left-0 -top-3 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Address</label>
-                    </div>
-                    <div class="mt-10 relative">
-                      <input id="DOB" name="DOB" type="date" class="peer w-full text-gray-400 px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" placeholder="-" required>
-                      <label for="DOB" class="absolute left-0 -top-5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Date Of Birth</label>
-                    </div>
-                    <div class="mt-10 relative">
-                      <input id="age" name="age" type="tel" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" pattern="[0-9]{2}" placeholder="-" required>
-                      <label for="age" class="absolute left-0 -top-3 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Age</label>
-                    </div>
-                    <div class="mt-12 relative">
-                      <!-- <input id="age" name="age" type="tel" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" pattern="[0-9]{2}" placeholder="-" required> -->
-                      <select id="gender" name="gender" class="peer bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                        <!-- <select id="gender" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600"> -->
-                        <option selected>Choose an option</option>
-                        <option value="M">MALE</option>
-                        <option value="F">FEMALE</option>
-                        <option value="O">OTHERS</option>
-                      </select>
-                      <label for="gender" class="absolute left-0 -top-5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Select Gender</label>
-                      <!--  -->
-                    </div>
-                    <div class="mt-10 relative">
-                      <input id="password" type="password" name="password" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" placeholder="-" required />
-                      <label for="password" class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Password</label>
-                    </div>
-                    <div class="mt-10 relative">
-                      <input id="confirm_password" type="password" name="confirm_password" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" placeholder="-" required />
-                      <label for="confirm_password" class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Confirm Password</label>
-                    </div>
-                    <!-- <input required type="radio" id="driver" value="driver" name="role">
-                    <label class="form-label" for="driver">Driver</label>
-                  </div><input type="submit" value="Submit" />
-                </fieldset>
-              </div> -->
-              
-            <!-- </div> -->
+            <div class="mt-10 relative">
+              <input id="username" name="username" type="text" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" placeholder="-" required>
+              <label for="username" class="absolute left-0 -top-3.5 text-grey-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Username</label>
+            </div>
+            <div class="mt-10 relative">
+              <input id="photo" name="photo" type="file" class="peer w-[75%] px-0.5 border-0 border-b-2 text-sm text-gray-400 border-gray-300 placeholder-transparent mt-2 focus:ring-0 focus:border-purple-600" placeholder="-" required>
+              <input id="photo-url" name="photoUrl" class="hidden" type="text" />
+              <button id="upload-btn" class="py-2 px-1 text-base text-white font-semibold text-center rounded-[10px] bg-purple-500 transition-all hover:bg-purple-600 focus:outline-none">Upload</button>
+              <label for="photo" class="absolute left-0 -top-3 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Photo</label>
+            </div>
+            <div class="mt-10 relative">
+              <input id="email" name="email" type="text" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" placeholder="-" required>
+              <label for="email" class="absolute left-0 -top-3 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Email</label>
+            </div>
+            <div class="mt-10 relative">
+              <input id="phone" name="phone" type="tel" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" pattern="[0-9]{10}" placeholder="-" required>
+              <label for="phone" class="absolute left-0 -top-3 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Phone Number</label>
+            </div>
+            <div class="mt-10 relative">
+              <input id="address" name="address" type="text" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" placeholder="-" required>
+              <label for="address" class="absolute left-0 -top-3 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Address</label>
+            </div>
+            <div class="mt-10 relative">
+              <input id="DOB" name="DOB" type="date" class="peer w-full text-gray-400 px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" placeholder="-" required>
+              <label for="DOB" class="absolute left-0 -top-5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Date Of Birth</label>
+            </div>
+            <div class="mt-10 relative">
+              <input id="age" name="age" type="tel" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" pattern="[0-9]{2}" placeholder="-" required>
+              <label for="age" class="absolute left-0 -top-3 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Age</label>
+            </div>
+            <div class="mt-12 relative">
+              <!-- <input id="age" name="age" type="tel" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" pattern="[0-9]{2}" placeholder="-" required> -->
+              <select id="gender" name="gender" class="peer bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <!-- <select id="gender" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600"> -->
+                <option selected>Choose an option</option>
+                <option value="M">MALE</option>
+                <option value="F">FEMALE</option>
+                <option value="O">OTHERS</option>
+              </select>
+              <label for="gender" class="absolute left-0 -top-5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Select Gender</label>
+              <!--  -->
+            </div>
+            <div class="mt-10 relative">
+              <input id="password" type="password" name="password" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" placeholder="-" required />
+              <label for="password" class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Password</label>
+            </div>
+            <div class="mt-10 relative">
+              <input id="confirm_password" type="password" name="confirm_password" class="peer w-full px-0.5 border-0 border-b-2 border-gray-300 placeholder-transparent mt-1 focus:ring-0 focus:border-purple-600" placeholder="-" required />
+              <label for="confirm_password" class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-1 peer-focus:-top-5 peer-focus:text-purple-600 peer-focus:text-sm peer-focus:font-bold">Confirm Password</label>
+            </div>
             <div class="mt-10">
               <label class="inline-flex items-center">
                 <input type="checkbox" class="rounded border-gray-300 text-purple-600 focus:border-purple-300 focus:ring focus:ring-offset-0 focus:ring-purple-200/50" required/>
@@ -103,13 +90,14 @@
               </label>
             </div>
             <button id="submit-btn" class="hidden w-full mt-14 py-4 text-lg text-white font-semibold text-center rounded-full bg-purple-500 transition-all hover:bg-purple-600 focus:outline-none">Sign up</button>
-            <p class="text-center text-sm text-gray-400 mt-4">Have an account ? <a href="#" class="font-semibold text-purple-600 hover:underline">Log in</a></p>
+            <p class="text-center text-sm text-gray-400 mt-4">Have an account ? <a href="/login_page" class="font-semibold text-purple-600 hover:underline">Register</a></p>
           </form>
         </div>
       </div>
   
     </div>
 </div>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/js/index.js"></script>
 </body>
