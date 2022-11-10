@@ -4,8 +4,6 @@ import bcrypt from 'bcrypt';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import path from "path";
-// const cookieParser = require("cookie-parser");
-import cookieParser from "cookie-parser";
 import sessions from 'express-session';
 const oneDay = 100000 * 60 * 60 * 24;
 const app = express();
@@ -40,24 +38,10 @@ db.connect((err) => {
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded());
-
+//-----------------------------customer---------------------------------------------
 app.get("/", async (req, res)=>{
-    // db.query("SELECT customer_id FROM customer",(err,results)=>{
-    //     if(err) console.log(err);
-    //     else{
-    //         let customer_id=results;
-    //         if(customer_id.length>0){
-    //             customer_id.sort((a,b) => (parseInt(a.customer_id.slice(1),10)+1)-(parseInt(b.customer_id.slice(1),10)+1));
-    //             let customerId=customer_id[0].customer_id;
-    //             res.render("index.ejs", {customerId});
-    //         }else{
-    //             console.log("customer_id is empty!");
-    //             //add C0000001 here -----------------------------
-    //         }
-    //     }
-    // })
     console.log('You are at homepage!');
-    res.render("homepage.ejs");
+    res.render("d_homepage.ejs");
 
 })
 app.get("/profile",(req,res)=>{
@@ -87,36 +71,12 @@ app.post("/signup_page", async(req, res)=>{
                     res.render("homepage.ejs")
                 });
             }else{
-                console.log("customer_id is empty!");//-----------------------------------if cid is empty start with C0000000000
+                console.log("customer_id is empty!");
             }
         }
     })
     
 });
-
-// app.post("/upload_img", async (req, res)=>{
-//     console.log(req.body);
-//     const {username,photo,email__,phone__,adress__,dob__,age__,gender__,pass__}=req.body;
-//     const hash=await bcrypt.hash(pass__,12);
-//     db.query("SELECT customer_id FROM customer",(err,results)=>{
-//         if(err) console.log(err);
-//         else{
-//             let customer_id=results;
-//             if(customer_id.length>0){
-//                 customer_id.sort((a,b) => (parseInt(b.customer_id.slice(1),10)+1)-(parseInt(a.customer_id.slice(1),10)+1));
-//                 let customerId=inc_id(customer_id[0].customer_id);
-//                 console.log(phone__);
-//                 db.query("INSERT INTO customer (customer_id,name_,photo,password_,contact,address,age,email_id,dob,gender) VALUES ?",[[[customerId,username,photo,hash,phone__,adress__,age__,email__,dob__,gender__]]],function(err){
-//                     if(err) console.log(err);
-//                     console.log("Signed Up!!");
-//                     // res.render("homepage.ejs");
-//                 });
-//             }else{
-//                 console.log("customer_id is empty!");//-----------------------------------if cid is empty start with C0000000000
-//             }
-//         }
-//     })
-// })
 app.get("/login_page",(req,res)=>{
     res.render("login.ejs")
 })
@@ -144,6 +104,85 @@ app.post("/login_action",(req,res)=>{
         }
     })
 })
+app.get("/get_curr_user", (req, res)=>{
+    db.query("SELECT * FROM customer WHERE customer_id = ?", [req.session.user], (err, result)=>{
+        if(err) console.log(err);
+        else res.send(result[0]);
+    })
+})
+//-----------------customer ended----------------------------
+//-----------------------------driver---------------------------------------------
+app.get("/d", async (req, res)=>{
+    console.log('You are at homepage!');
+    res.render("d_homepage.ejs");
+
+})
+app.get("/d_profile",(req,res)=>{
+    res.render("d_profile.ejs")
+})
+app.get("/d_signup",(req,res)=>{
+    res.render("d_signup.ejs")
+})
+app.post("/d_signup_page", async(req, res)=>{
+    // console.log(req.body);
+    console.log(req.body);
+    const {username,photoUrl,vehicle,phone,address,DOB,age,gender,password,confirm_pass}=req.body;
+    const hash=await bcrypt.hash(password,12);
+    db.query("SELECT driver_id FROM driver",(err,results)=>{
+        if(err) console.log(err);
+        else{
+            let driver_id=results;
+            if(driver_id.length>0){
+                driver_id.sort((a,b) => (parseInt(b.driver_id.slice(1),10)+1)-(parseInt(a.driver_id.slice(1),10)+1));
+                let driverId=inc_id(driver_id[0].driver_id);
+                req.session.user = driverId;
+                console.log("id",req.session.user);
+
+                db.query("INSERT INTO driver (driver_id,vehicle_id,name_,rating,photo,contact_no,address_,age,dob,gender,password_) VALUES ?",[[[driverId,vehicle,username,4,photoUrl,phone,address,age,DOB,gender,hash]]],function(err){
+                    if(err) console.log(err);
+                    console.log("Signed Up!!");
+                    res.render("d_homepage.ejs")
+                });
+            }else{
+                console.log("customer_id is empty!");
+            }
+        }
+    })
+    
+});
+app.get("/d_login_page",(req,res)=>{
+    res.render("d_login.ejs")
+})
+app.post("/d_login_action",(req,res)=>{
+    console.log(req.body);
+    const {name,password}=req.body;
+    db.query("SELECT driver_id,password_ FROM driver WHERE name_=?",[name],(err,res1)=>{
+        if(err) console.log(err);
+        else{
+            console.log(res1[0],password);
+            var did=res1[0].driver_id;
+            bcrypt.compare(password, res1[0].password_, function(err, res2) {
+                if (err){
+                  console.log(err);
+                }
+                if (res2) {
+                    console.log(did)
+                    req.session.user =did;
+                    res.render("d_homepage.ejs")
+                } else {
+                  return response.json({success: false, message: 'passwords do not match'});
+                }
+            });
+        }
+    })
+})
+app.get("/get_curr_d", (req, res)=>{
+    db.query("SELECT * FROM driver WHERE driver_id = ?", [req.session.user], (err, result)=>{
+        if(err) console.log(err);
+        else res.send(result[0]);
+    })
+})
+//-----------------driver ended----------------------------
 app.post("/book_trip", async(req, res)=> {
 
     // console.log(req.files)
@@ -180,12 +219,6 @@ app.post("/book_trip", async(req, res)=> {
 })
 
 
-app.get("/get_curr_user", (req, res)=>{
-    db.query("SELECT * FROM customer WHERE customer_id = ?", [req.session.user], (err, result)=>{
-        if(err) console.log(err);
-        else res.send(result[0]);
-    })
-})
 
 app.get("/logout",(req,res)=>{
     req.session.destroy();

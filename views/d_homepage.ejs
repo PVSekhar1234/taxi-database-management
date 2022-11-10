@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"> -->
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="/css/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+  </head>
+  <body>
+    <div id="map" class="map z-[-999]"></div>
+    <span
+    class="absolute text-white text-4xl top-5 left-4 cursor-pointer"
+    onclick="openSidebar()"
+    >
+    <i class="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>
+  </span>
+    <div class="translate-y-[475px] translate-x-80 bg-yellow-100 p-3 shadow-sm rounded-sm ">
+        <table class="table-fixed border-spacing: 300px ">
+            <thead>
+              <tr>
+                <th>Start</th>
+                <th>Destination</th>
+                <th>Est. Trip Time</th>
+                <th>Distance </th>
+                <th>Trip Cost(Rs)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                <td>Malcolm Lockyer</td>
+                <td>1961</td>
+                <td>35</td>
+                <td>500</td>
+              </tr>
+              <tr>
+                <td>Witchy Woman</td>
+                <td>The Eagles</td>
+                <td>1972</td>
+                <td>35</td>
+                <td>500</td>
+              </tr>
+              <tr>
+                <td>Shining Star</td>
+                <td>Earth, Wind, and Fire</td>
+                <td>1975</td>
+                <td>35</td>
+                <td>500</td>
+              </tr>
+            </tbody>
+        </table>
+
+    </div>
+        
+
+  <div class="sidebar fixed top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-gray-700">
+      <div class="text-gray-100 text-xl">
+        <div class="p-2.5 mt-1 flex items-center">
+          <i class="bi bi-app-indicator px-2 py-1 rounded-md bg-yellow-500"></i>
+          <h1 class="font-bold text-gray-200 text-[15px] ml-3">SS Taxis</h1>
+          <i class="bi bi-x cursor-pointer ml-28" onclick="openSidebar()"></i>
+        </div>
+        <div class="my-2 bg-gray-600 h-[1px]"></div>
+      </div>
+      <div class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-yellow-500 text-gray-700">
+        <i class="bi bi-search text-sm"></i>
+        <input type="text" placeholder="Search" class="text-[15px] placeholder-gray-700 ml-4 w-full bg-transparent focus:outline-none"/>
+      </div>
+      <div class="group p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-yellow-500">
+        <i class="bi bi-house-door-fill text-yellow-500 group-hover:text-gray-700"></i>
+        <a href="/"><span class="text-[15px] ml-4 text-gray-200 font-bold group-hover:text-gray-700">Home</span></a>
+      </div>
+      <div class="group p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-yellow-500">
+        <i class="bi bi-bookmark-fill text-yellow-500 group-hover:text-gray-700"></i>
+        <a href="/d_profile"><span class="text-[15px] ml-4 text-gray-200 font-bold group-hover:text-gray-700">Profile</span></a>
+      </div>
+      <div class="my-4 bg-gray-600 h-[1px]"></div>
+      <!-- <div class="group p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-yellow-500" onclick="dropdown()">
+        <i class="bi bi-chat-left-text-fill text-yellow-500 group-hover:text-gray-700"></i>
+        <div class="flex justify-between w-full items-center">
+          <span class="text-[15px] ml-4 text-gray-200 font-bold group-hover:text-gray-700">Chatbox</span>
+          <span class="text-sm rotate-180" id="arrow">
+            <i class="bi bi-chevron-down text-yellow-500 group-hover:text-gray-500"></i>
+          </span>
+        </div>
+      </div> -->
+      
+      <div class="group p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-yellow-500">
+        <i class="bi bi-box-arrow-in-right text-yellow-500 group-hover:text-gray-700"></i>
+        <span class="text-[15px] ml-4 text-gray-200 font-bold group-hover:text-gray-700"><a href="/d_signup">SignUp</a></span>
+      </div>
+    </div>
+    <!-- <button class="confirm_trip z-[999] translate-x-[1080px] translate-y-[130px] bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
+      Book My Trip
+    </button> -->
+    <!-- <div><img src="https://drive.google.com/uc?id=1tXbcQjjxWh2WqbbTO98dy-wpUWqb4wQg" alt="" class="object-fill h-full w-full"></div> -->
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+    <script src="/js/driver_leaflet-routing-machine.js"></script>
+    <script src="/js/Control.Geocoder.js"></script>
+    <script src="/js/driver_index_map.js"></script>
+    <!-- <script src="/js/submit_trip.js"></script> -->
+    <script type="text/javascript">
+      // function dropdown() {
+      //   document.querySelector("#submenu").classList.toggle("hidden");
+      //   document.querySelector("#arrow").classList.toggle("rotate-0");
+      // }
+      // dropdown();
+
+      function openSidebar() {
+        document.querySelector(".sidebar").classList.toggle("hidden");
+      }
+      setTimeout(function(){
+        const route=document.querySelector(".leaflet-routing-container").classList.add("hidden");
+
+      },10000)
+    </script>
+</body>
+</html>
