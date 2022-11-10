@@ -24,3 +24,7 @@
 .border-main-color {
     border-color: var(--main-color);
 }
+
+td,th{
+    padding-right : 100px;
+}

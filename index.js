@@ -112,7 +112,22 @@ app.post("/login_action",(req,res)=>{
 app.get("/get_curr_user", (req, res)=>{
     db.query("SELECT * FROM customer WHERE customer_id = ?", [req.session.user], (err, result)=>{
         if(err) console.log(err);
-        else res.send(result[0]);
+        else{
+            db.query("SELECT * FROM trip WHERE customer_id=?",[req.session.user],(err,result2)=>{
+                if(err) console.log(err);
+                else{
+                    console.log(result[0]);
+                    console.log(result2);
+                    result[0]['history']=result2;
+                    res.send(result[0]);
+                }
+                // res.append('history',result2[0]);
+                // console.log(res);
+                // res.send();
+            })
+        }
+        // else res.append('details',result[0]);
+        // else res.send(result[0]);
     })
 })
 //-----------------customer ended----------------------------
