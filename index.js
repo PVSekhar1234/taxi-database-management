@@ -41,7 +41,12 @@ app.use(express.urlencoded());
 //-----------------------------customer---------------------------------------------
 app.get("/", async (req, res)=>{
     console.log('You are at homepage!');
-    res.render("d_homepage.ejs");
+    res.render("index.ejs");
+
+})
+app.get("/homepage", async (req, res)=>{
+    // console.log('You are at homepage!');
+    res.render("homepage.ejs");
 
 })
 app.get("/profile",(req,res)=>{
@@ -222,7 +227,7 @@ app.post("/book_trip", async(req, res)=> {
 
 app.get("/logout",(req,res)=>{
     req.session.destroy();
-    res.render("/");
+    res.render("index.ejs");
 })
 app.listen(3000, ()=>{
     console.log("Listening on port 3000!")
