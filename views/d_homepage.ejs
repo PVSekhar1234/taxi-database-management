@@ -23,39 +23,41 @@
     >
     <i class="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>
   </span>
-    <div class="translate-y-[475px] translate-x-80 bg-yellow-100 p-3 shadow-sm rounded-sm ">
-        <table class="table-fixed border-spacing: 300px ">
+    <div class="translate-y-[500px] translate-x-80 bg-yellow-100 p-3 shadow-sm rounded-sm ">
+        <table id="myTable" class="table-fixed border-spacing-[300px] ">
             <thead>
-              <tr>
+              <!-- <tr>
                 <th>Start</th>
                 <th>Destination</th>
                 <th>Est. Trip Time</th>
                 <th>Distance </th>
                 <th>Trip Cost(Rs)</th>
-              </tr>
+                <th>Accept Button</th>
+              </tr> -->
             </thead>
             <tbody>
-              <tr>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>Malcolm Lockyer</td>
-                <td>1961</td>
-                <td>35</td>
-                <td>500</td>
-              </tr>
-              <tr>
-                <td>Witchy Woman</td>
-                <td>The Eagles</td>
-                <td>1972</td>
-                <td>35</td>
-                <td>500</td>
-              </tr>
-              <tr>
-                <td>Shining Star</td>
-                <td>Earth, Wind, and Fire</td>
-                <td>1975</td>
-                <td>35</td>
-                <td>500</td>
-              </tr>
+              <h1> Trip Box </h1>
+              <table>
+                <tr>
+                  <th>Start</th>
+                  <th>Destination</th>
+                  <th>Distance</th>
+                  <th>Trip Cost</th>
+                  <th>Accept Button</th>
+                </tr>
+                <tr>
+                  <th>Indore</th>
+                  <th>Delhi</th>
+                  <th>10</th>
+                  <th>200</th>
+                  <th><button class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >Accept Trip</button></th>
+                </tr>
+                <!-- <tr>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                </tr> -->
+              </table>
             </tbody>
         </table>
 
@@ -107,7 +109,7 @@
     <script src="/js/driver_leaflet-routing-machine.js"></script>
     <script src="/js/Control.Geocoder.js"></script>
     <script src="/js/driver_index_map.js"></script>
-    <!-- <script src="/js/submit_trip.js"></script> -->
+    <script src="/js/driver_avail.js"></script>
     <script type="text/javascript">
       // function dropdown() {
       //   document.querySelector("#submenu").classList.toggle("hidden");

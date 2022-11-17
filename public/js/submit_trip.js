@@ -7,6 +7,9 @@ details.addEventListener("click", ()=>{
     console.log(dist,',',time)
     let stops=[]
     let i=0
+    let amount=(Number(dist.substring(0,dist_time.indexOf('k')-1))/28.4)*1.02*(108.68)
+    console.log(amount,"amt")
+    const tid = document.getElementById("tripData");
     while(document.querySelector(".leaflet-routing-geocoders").childNodes[i].value!=''){
         stops.push(document.querySelector(".leaflet-routing-geocoders").childNodes[i].childNodes[0].value)
         console.log(document.querySelector(".leaflet-routing-geocoders").childNodes[i].childNodes[0].value)
@@ -16,4 +19,16 @@ details.addEventListener("click", ()=>{
         }
     }
     console.log(stops);
+    axios.post("http://localhost:3000/trip_details",{
+        dist:dist,
+        time:time,
+        stops:stops,
+        amount:amount
+    })
+    .then((response) => {
+        console.log(response.data,"tripId");
+        tid.innerText = response.data;
+      }, (error) => {
+        console.log(error);
+      });
 })

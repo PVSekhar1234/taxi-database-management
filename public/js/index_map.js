@@ -37,7 +37,7 @@ function create_control(lo,la){
 	waypoints: [
 		L.latLng(la,lo),
 		L.latLng(la,lo)
-		// L.latLng(22.6792, 75.749)
+		// L.latLng(22.6792, 7 5.749)
 	],
 	geocoder: L.Control.Geocoder.nominatim(),
 	routeWhileDragging: true,

@@ -103,9 +103,32 @@ app.post("/login_action",(req,res)=>{
                     req.session.user =cid;
                     res.render("homepage.ejs")
                 } else {
-                  return response.json({success: false, message: 'passwords do not match'});
+                  return res.json({success: false, message: 'passwords do not match'});
                 }
             });
+        }
+    })
+})
+app.post("/trip_details",(req,res)=>{
+    const {dist,time,stops,amount}=req.body;
+    db.query("SELECT trip_id FROM trip",(err,results)=>{
+        if(err) console.log(err);
+        else{
+            let trip_id=results;
+            if(trip_id.length>0){
+                trip_id.sort((a,b) => (parseInt(b.trip_id.slice(1),10)+1)-(parseInt(a.trip_id.slice(1),10)+1));
+                let tripId=inc_id(trip_id[0].trip_id);
+                let user=req.session.user;
+                console.log("id",req.session.user);
+
+                db.query("INSERT INTO trip (trip_id,amount,travel_time,distance,start_location,destination,halts,status_of_trip,customer_id) VALUES ?",[[[tripId,amount,time,dist,stops[0],stops[stops.length-1],stops.slice(1,stops.length-1).toString(),"Waiting",user]]],function(err){
+                    if(err) console.log(err);
+                    console.log("Trip values inserted!!");
+                    res.send(tripId);
+                });
+            }else{
+                console.log("trip is empty!");
+            }
         }
     })
 })
@@ -128,6 +151,15 @@ app.get("/get_curr_user", (req, res)=>{
         }
         // else res.append('details',result[0]);
         // else res.send(result[0]);
+    })
+})
+app.post("/isConfirmed",(req,res)=>{
+    var {tid}=req.body;
+    db.query("SELECT * FROM trip WHERE trip_id = ?", [tid], (err, result)=>{
+        if(err) console.log(err);
+        else{
+            console.log(result,"result")
+        }
     })
 })
 //-----------------customer ended----------------------------
@@ -237,6 +269,9 @@ app.post("/book_trip", async(req, res)=> {
         }
     })
 })
+// app.get("/driver_avail",(req,res)=>{
+
+// })
 
 
 
