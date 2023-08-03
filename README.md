@@ -36,7 +36,7 @@ Bcrypt is used as a  password-hashing function for storing the passwords of our 
 Cloudinary is an end-to-end image and video management solution for websites and mobile apps, covering everything from image and video uploads, storage, manipulations, and optimizations to delivery. Used for storing images of users.
 
 ## Entity Relationship Diagram:
-![ER Diagram](https://drive.google.com/file/d/15UuOLsOPG3b-vjGs_D7BLsVVMfP0Vs-z/view?usp=sharing)
+![Taxi](https://github.com/PVSekhar1234/taxi-database-management/assets/107608024/cf67fce9-eb26-4dc5-bdc0-80b7c018bcae)
 
 ## Report: 
 https://docs.google.com/document/d/1RV3lD5cUpLOdPn-lYk9l4FoRhu4XRV1QONniyk_f85c/edit?usp=sharing
